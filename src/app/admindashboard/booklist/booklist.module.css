@@ -1,0 +1,9 @@
+.colonhead{
+    max-width: 150px;
+    margin: 0 4px 2px 4px;
+    height: 30px;
+    
+  }
+  .csp{
+    cursor: n-resize;
+  }

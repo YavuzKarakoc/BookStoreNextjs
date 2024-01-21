@@ -25,6 +25,14 @@ export type BookStoreContextProps = {
     setIsBookDeleteForm: Dispatch<SetStateAction<boolean>>;
     book: bookM | undefined;
     setBook: Dispatch<SetStateAction<bookM | undefined>>;
+    totalCount:number;
+    setTotalCount:Dispatch<SetStateAction<number>>;
+    pageSize: number;
+    setPageSize: Dispatch<SetStateAction<number>>;
+    currentPage: number;
+    setCurrentPage: Dispatch<SetStateAction<number>>;
+    totalPages: number;
+
 };
 
 // initial değerlerini giriyoruz
@@ -40,6 +48,13 @@ export const initialListView: BookStoreContextProps = {
     setIsBookDeleteForm: () => {},
     book: undefined,
     setBook: () => {},
+    totalCount:0,
+    setTotalCount: () => {},
+    pageSize: 5,
+    setPageSize: () => {},
+    currentPage: 1,
+    setCurrentPage: () => {},
+    totalPages: 1,
 };
 
 const ListViewContext = createContext<BookStoreContextProps>(initialListView);
@@ -65,8 +80,21 @@ const BookStoreListProvider: React.FC<BookStoreContextProviderProps> = ({
     );
     const [book, setBook] = useState<any>(initialListView.book);
 
+    const [totalCount, setTotalCount] = useState<number>(initialListView.totalCount);
+    const [pageSize, setPageSize] = useState<number>(initialListView.pageSize);
+    const [currentPage, setCurrentPage] = useState<number>(
+        initialListView.currentPage
+    );
+    const [totalPages, setTotalPages] = useState<number>(
+        initialListView.totalPages
+    );
+
     useEffect(() => {
-        getAllBooks().then((data) => setBooks(data));
+        getAllBooks().then((data:any) => {
+            setBooks(data)
+            setTotalCount(data.length)
+        });
+
     }, [isBookAddForm, isBookUpdateForm, isBookDeleteForm]);
     useEffect(() => {
         getAllAuthor().then((data) => setAuthors(data));
@@ -85,7 +113,14 @@ const BookStoreListProvider: React.FC<BookStoreContextProviderProps> = ({
                 isBookDeleteForm,
                 setIsBookDeleteForm,
                 book,
+                totalCount,
+                setTotalCount,
                 setBook,
+                pageSize,
+                setPageSize,
+                currentPage,
+                setCurrentPage,
+                totalPages,
             }}
         >
             {children}

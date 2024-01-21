@@ -15,17 +15,17 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <div>
+        <div className="h-100">
             <BookStoreListProvider>
-            <div className="col-12 row">
-                <div className="col-3 h-100" >
-                <Sidebar/>
+                <div className="col-12 row h-100">
+                    <div className="col-3 h-100">
+                        <Sidebar/>
+                    </div>
+                    <div className="col-9">
+                        <Header/>
+                        <div>{children}</div>
+                    </div>
                 </div>
-                <div className="col-9">
-                <Header/>
-                <div>{children}</div>
-                </div>
-            </div>
             </BookStoreListProvider>
         </div>
     );

@@ -16,7 +16,7 @@ function AddBookForm() {
     const handleSubmit = async (values: bookM) => {
         console.log(values);
         values.authorId = Number(values.authorId);
-        console.log(typeof(values.authorId));
+        console.log(typeof values.authorId);
         createBook(values).then(() => {
             setIsBookAddForm(false);
         });
@@ -31,7 +31,6 @@ function AddBookForm() {
                     width: "40%",
                     margin: "auto",
                     maxHeight: "320px",
-                    
                 },
                 overlay: {
                     backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -54,42 +53,81 @@ function AddBookForm() {
                     {({ values, setFieldValue }) => (
                         <Form>
                             <div className="d-flex flex-column justify-content-center">
-                                <div  className={styles.item}>
-                                    <label htmlFor="name" className={styles.label}>
+                                <div className={styles.item}>
+                                    <label
+                                        htmlFor="name"
+                                        className={styles.label}
+                                    >
                                         <b>Book Name</b>
                                     </label>
-                                    <Field type="text" name="name" className={styles.field} />
-                                </div>
-                                <div  className={styles.item}>
-                                    <label htmlFor="price" className={styles.label}>
-                                        <b>Price</b>
-                                    </label>
-                                    <Field type="text" name="price" className={styles.field} />
-                                </div>
-                                <div  className={styles.item}>
-                                    <label htmlFor="type" className={styles.label}>
-                                        <b>Type</b>
-                                    </label>
-                                    <Field type="text" name="type" className={styles.field} />
-                                </div>
-                                <div  className={styles.item}>
-                                    <label htmlFor="language" className={styles.label}>
-                                        <b>Language</b>
-                                    </label>
-                                    <Field type="text" name="language" className={styles.field} />
+                                    <Field
+                                        type="text"
+                                        name="name"
+                                        className={styles.field}
+                                    />
                                 </div>
                                 <div className={styles.item}>
-                                    <label htmlFor="authorId" className={`${styles.label}   `}>
+                                    <label
+                                        htmlFor="price"
+                                        className={styles.label}
+                                    >
+                                        <b>Price</b>
+                                    </label>
+                                    <Field
+                                        type="text"
+                                        name="price"
+                                        className={styles.field}
+                                    />
+                                </div>
+                                <div className={styles.item}>
+                                    <label
+                                        htmlFor="type"
+                                        className={styles.label}
+                                    >
+                                        <b>Type</b>
+                                    </label>
+                                    <Field
+                                        type="text"
+                                        name="type"
+                                        className={styles.field}
+                                    />
+                                </div>
+                                <div className={styles.item}>
+                                    <label
+                                        htmlFor="language"
+                                        className={styles.label}
+                                    >
+                                        <b>Language</b>
+                                    </label>
+                                    <Field
+                                        type="text"
+                                        name="language"
+                                        className={styles.field}
+                                    />
+                                </div>
+                                <div className={styles.item}>
+                                    <label
+                                        htmlFor="authorId"
+                                        className={`${styles.label}   `}
+                                    >
                                         <b>Author</b>
                                     </label>
-                                    <Field as="select" name="authorId" className={styles.formselect}>
-
+                                    <Field
+                                        as="select"
+                                        name="authorId"
+                                        className={styles.formselect}
+                                    >
                                         {/* authors'ları dön ve seçenekleri oluştur */}
-                                        {authors.map((author:authorM, index:any) => (
-                                            <option key={index} value={author.id}>
-                                                {author.name}
-                                            </option>
-                                        ))}
+                                        {authors.map(
+                                            (author: authorM, index: any) => (
+                                                <option
+                                                    key={index}
+                                                    value={author.id}
+                                                >
+                                                    {author.name}
+                                                </option>
+                                            )
+                                        )}
                                     </Field>
                                 </div>
                                 <div className="w-100 d-flex justify-content-center">

@@ -1,0 +1,21 @@
+.header{
+    min-height: 50px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+}
+
+
+.sidebar{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: red;
+}
+
+.sidelink{
+    text-decoration: none;
+    color: white;
+    margin-top: 5px;
+}
